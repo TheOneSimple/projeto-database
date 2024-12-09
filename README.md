@@ -64,10 +64,11 @@ Este ficheiro descreve a estrutura do projeto e fornece informações gerais.
 
 1. Certifique-se de que possui o Python instalado na sua máquina.
 2. Navegue até o diretório `src/app/` e execute o ficheiro `main.py`:
+   
    ```bash
    python main.py
    ```
-3. Para utilizar outras funcionalidades, explore os scripts nas subpastas `create/`, `read/`, `update/` e `delete/`.
+4. Para utilizar outras funcionalidades, explore os scripts nas subpastas `create/`, `read/`, `update/` e `delete/`.
 
 ## Notas Finais
 

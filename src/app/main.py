@@ -11,6 +11,7 @@ from create.materiais_create import MateriaisDatabase  # Classe para manipular a
 from delete.alunos_delete import AlunoDeleter  # Classe para deletar registros na tabela 'alunos'
 from delete.materiais_delete import MaterialRepository  # Classe para deletar registros na tabela 'materiais'
 from delete.professores_delete import ProfessorDeleter  # Classe para deletar registros na tabela 'professores'
+from update.alunos_update import Updateyah  # Classe para atualizar registros na tabela 'alunos'
 
 def main():
     """
@@ -29,7 +30,8 @@ def main():
             print("3. Inserir dados na tabela Materiais")
             print("4. Visualizar tabelas")
             print("5. Remover dados")
-            print("6. Sair")
+            print("6. Atualizar dados")
+            print("7. Sair")
             choice = input("Escolha uma opção: ")
 
             # Opção 5: Remover dados
@@ -60,6 +62,16 @@ def main():
                     db.close()
                 else:
                     print("Opção inválida.")
+
+            # Opção 1: Inserir dados na tabela 'alunos'
+            elif choice == '1':
+                db = AlunosDatabase(db_name)
+                nome = input("Digite o nome do aluno: ")
+                idade = int(input("Digite a idade do aluno: "))
+                curso = input("Digite o curso do aluno: ")
+                db.insert_data(nome, idade, curso)
+                print("Aluno inserido com sucesso!")
+                db.close()
 
             # Opção 2: Inserir dados na tabela 'professores'
             elif choice == '2':
@@ -114,16 +126,34 @@ def main():
                 else:
                     print("Opção inválida.")
 
-            # Opção 6: Sair do programa
+            # Opção 6: Atualizar dados
             elif choice == '6':
+                print("\nEscolha uma tabela para atualizar dados:")
+                print("1. Alunos")
+                print("2. Professores")
+                print("3. Materiais")
+                table_choice = input("Escolha uma opção: ")
+
+                if table_choice == '1':  # Atualizar dados na tabela 'alunos'
+                    db = Updateyah(db_name)
+                    aluno_id = int(input("Digite o ID do aluno a ser atualizado: "))
+                    nome = input("Digite o novo nome (ou pressione Enter para não alterar): ")
+                    idade = input("Digite a nova idade (ou pressione Enter para não alterar): ")
+                    curso = input("Digite o novo curso (ou pressione Enter para não alterar): ")
+                    db.update_data(aluno_id, nome or None, idade or None, curso or None)
+                    print("Aluno atualizado com sucesso!")
+                    db.close()
+                else:
+                    print("Opção inválida.")
+
+            # Opção 7: Sair do programa
+            elif choice == '7':
                 print("Encerrando o programa...")
                 break
 
-            # Caso nenhuma das opções seja válida
             else:
                 print("Opção inválida. Tente novamente.")
     except Exception as e:
-        # Captura e exibe erros gerais
         print(f"Ocorreu um erro: {e}")
         print("Encerrando o programa...")
 

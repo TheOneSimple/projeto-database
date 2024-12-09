@@ -2,12 +2,12 @@ class ProfessorDeleter:
     """
     Classe responsável por deletar registros de professores em um banco de dados.
     """
-    def __init__(self, database_connection):
+    def __init__(self, db_path='sqlite-database/epbjc.db'):
         """
         Inicializa a classe com uma conexão ao banco de dados.
         :param database_connection: Objeto de conexão com o banco de dados.
         """
-        self.db_connection = database_connection  # Armazena a conexão com o banco de dados
+        self.db_path = db_path # Armazena a conexão com o banco de dados
 
     def delete_professor(self, professor_id):
         """

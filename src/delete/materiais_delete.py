@@ -3,10 +3,11 @@ class MaterialRepository:
     Classe que representa um repositório de materiais em memória.
     Permite adicionar, deletar e listar materiais armazenados.
     """
-    def __init__(self):
+    def __init__(self, db_path='sqlite-database/epbjc.db'):
         """
         Inicializa o repositório com uma lista vazia de materiais.
         """
+        self.db_path = db_path
         self.materials = []  # Lista que armazena os materiais
 
     def add_material(self, material):
